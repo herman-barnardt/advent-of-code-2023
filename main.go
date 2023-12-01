@@ -1,14 +1,16 @@
 package main
 
 import (
+	_ "advent-of-code-2023/day1"
 	"flag"
 	"log"
 	"os"
 	"strconv"
+
 	"github.com/herman-barnardt/aoc"
 )
 
-func main() { 
+func main() {
 	flag.Parse()
 
 	command := flag.Arg(0)
