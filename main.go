@@ -2,6 +2,7 @@ package main
 
 import (
 	_ "advent-of-code-2023/day1"
+	_ "advent-of-code-2023/day2"
 	"flag"
 	"log"
 	"os"
