@@ -12,7 +12,8 @@ func init() {
 }
 
 func solve2023Day1Part1(lines []string) interface{} {
-	values := make([]int, 0)
+
+	sum := 0
 	for _, line := range lines {
 		lineNums := make([]string, 0)
 		for _, c := range strings.Split(line, "") {
@@ -26,17 +27,13 @@ func solve2023Day1Part1(lines []string) interface{} {
 		if err != nil {
 			panic(err)
 		}
-		values = append(values, value)
-	}
-	sum := 0
-	for _, v := range values {
-		sum += v
+		sum += value
 	}
 	return sum
 }
 
 func solve2023Day1Part2(lines []string) interface{} {
-	values := make([]int, 0)
+	sum := 0
 	var validNumbers = map[string]string{
 		"1":     "1",
 		"2":     "2",
@@ -59,27 +56,18 @@ func solve2023Day1Part2(lines []string) interface{} {
 	}
 	for _, line := range lines {
 		lineNums := make([]string, 0)
-		lineDup := line
-		for len(lineDup) > 0 {
+		for len(line) > 0 {
 			for k, v := range validNumbers {
-				if strings.HasPrefix(lineDup, k) {
+				if strings.HasPrefix(line, k) {
 					lineNums = append(lineNums, v)
+					break
 				}
 			}
-			if len(lineDup) > 0 {
-				lineDup = lineDup[1:]
-			}
+			line = line[1:]
 		}
 		lineVal := lineNums[0] + lineNums[len(lineNums)-1]
-		value, err := strconv.Atoi(lineVal)
-		if err != nil {
-			panic(err)
-		}
-		values = append(values, value)
-	}
-	sum := 0
-	for _, v := range values {
-		sum += v
+		value, _ := strconv.Atoi(lineVal)
+		sum += value
 	}
 	return sum
 }
