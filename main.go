@@ -8,6 +8,7 @@ import (
 	_ "advent-of-code-2023/day5"
 	_ "advent-of-code-2023/day6"
 	_ "advent-of-code-2023/day7"
+	_ "advent-of-code-2023/day8"
 	"flag"
 	"log"
 	"os"
