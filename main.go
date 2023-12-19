@@ -9,6 +9,7 @@ import (
 	_ "advent-of-code-2023/day14"
 	_ "advent-of-code-2023/day15"
 	_ "advent-of-code-2023/day17"
+	_ "advent-of-code-2023/day18"
 	_ "advent-of-code-2023/day2"
 	_ "advent-of-code-2023/day3"
 	_ "advent-of-code-2023/day4"
