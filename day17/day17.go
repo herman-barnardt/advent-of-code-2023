@@ -1,6 +1,8 @@
 package day17
 
 import (
+	"math"
+
 	aoc "github.com/herman-barnardt/aoc"
 	"github.com/herman-barnardt/aoc/graph"
 	"github.com/herman-barnardt/aoc/util"
@@ -70,17 +72,17 @@ func (n crucibleNode) Equal(to graph.Node) bool {
 }
 
 func solve2023Day17Part1(lines []string) interface{} {
-	for y, row := range util.LinesToIntMap(lines) {
+	for y, row := range util.LinesToMapofInts(lines) {
 		for x, v := range row {
 			grid[util.Point{X: x, Y: y}] = v
 		}
 	}
 
-	start := &crucibleNode{util.Point{X: 0, Y: 0}, 0, 1, "v"}
 	end := &crucibleNode{util.Point{X: len(lines[0]) - 1, Y: len(lines) - 1}, 0, 0, ""}
 
-	_, cost, _ := graph.FindShortestPath(start, end)
-	return cost
+	_, costDown, _ := graph.FindShortestPath(&crucibleNode{util.Point{X: 0, Y: 0}, 0, 1, "v"}, end)
+	_, costRight, _ := graph.FindShortestPath(&crucibleNode{util.Point{X: 0, Y: 0}, 0, 1, ">"}, end)
+	return math.Min(costDown, costRight)
 }
 
 //THERE IS A BUG SOMEWHERE THAT IS CAUSING THE STARTING DOWN ON PART 2 TO HAVE A LOWER VALUE THAT IS NOT CORRECT
@@ -88,14 +90,14 @@ func solve2023Day17Part1(lines []string) interface{} {
 func solve2023Day17Part2(lines []string) interface{} {
 	minMoves = 4
 	maxMoves = 10
-	for y, row := range util.LinesToIntMap(lines) {
+	for y, row := range util.LinesToMapofInts(lines) {
 		for x, v := range row {
 			grid[util.Point{X: x, Y: y}] = v
 		}
 	}
 	end := &crucibleNode{util.Point{X: len(lines[0]) - 1, Y: len(lines) - 1}, 0, 0, ""}
 
-	_, cost, _ := graph.FindShortestPath(&crucibleNode{util.Point{X: 0, Y: 0}, 0, 1, ">"}, end)
-
-	return cost
+	_, costDown, _ := graph.FindShortestPath(&crucibleNode{util.Point{X: 0, Y: 0}, 0, 1, "v"}, end)
+	_, costRight, _ := graph.FindShortestPath(&crucibleNode{util.Point{X: 0, Y: 0}, 0, 1, ">"}, end)
+	return math.Min(costDown, costRight)
 }
