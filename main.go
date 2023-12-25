@@ -18,6 +18,7 @@ import (
 	_ "advent-of-code-2023/day22"
 	_ "advent-of-code-2023/day23"
 	_ "advent-of-code-2023/day24"
+	_ "advent-of-code-2023/day25"
 	_ "advent-of-code-2023/day3"
 	_ "advent-of-code-2023/day4"
 	_ "advent-of-code-2023/day5"
